@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Connect - Resources</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/resources.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <h1>Student Connect</h1>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="connect.html">Connect</a>
+            <a href="resources.html" class="active">Resources</a>
+            <a href="chat.html">Chat</a>
+            <a href="events.html">Events</a>
+        </div>
+        <div class="user-menu">
+            <img src="images/avatar.png" alt="Profile" class="avatar">
+            <div class="dropdown-menu">
+                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+        <div class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="resources-container">
+        <!-- Search and Filter Section -->
+        <section class="search-section">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for study materials...">
+            </div>
+            <div class="filters">
+                <select class="filter-select">
+                    <option value="">Subject</option>
+                    <option value="cs">Computer Science</option>
+                    <option value="math">Mathematics</option>
+                    <option value="eng">Engineering</option>
+                    <option value="bus">Business</option>
+                </select>
+                <select class="filter-select">
+                    <option value="">Type</option>
+                    <option value="notes">Notes</option>
+                    <option value="slides">Slides</option>
+                    <option value="books">Books</option>
+                    <option value="videos">Videos</option>
+                </select>
+                <button class="btn upload-btn">
+                    <i class="fas fa-upload"></i> Upload Resource
+                </button>
+            </div>
+        </section>
+
+        <!-- Resources Grid -->
+        <section class="resources-grid">
+            <!-- Resource Card 1 -->
+            <div class="resource-card">
+                <div class="resource-type">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="resource-info">
+                    <h3>CS101 Lecture Notes</h3>
+                    <p class="resource-meta">
+                        <span class="subject">Computer Science</span>
+                        <span class="uploader">By John Doe</span>
+                    </p>
+                    <p class="resource-description">Comprehensive notes covering all topics from CS101 lectures</p>
+                </div>
+                <div class="resource-actions">
+                    <button class="btn download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button class="btn share-btn">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resource Card 2 -->
+            <div class="resource-card">
+                <div class="resource-type">
+                    <i class="fas fa-file-powerpoint"></i>
+                </div>
+                <div class="resource-info">
+                    <h3>Math 201 Slides</h3>
+                    <p class="resource-meta">
+                        <span class="subject">Mathematics</span>
+                        <span class="uploader">By Jane Smith</span>
+                    </p>
+                    <p class="resource-description">Complete set of slides for Math 201 course</p>
+                </div>
+                <div class="resource-actions">
+                    <button class="btn download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button class="btn share-btn">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resource Card 3 -->
+            <div class="resource-card">
+                <div class="resource-type">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="resource-info">
+                    <h3>Engineering Tutorial</h3>
+                    <p class="resource-meta">
+                        <span class="subject">Engineering</span>
+                        <span class="uploader">By Mike Johnson</span>
+                    </p>
+                    <p class="resource-description">Video tutorial on advanced engineering concepts</p>
+                </div>
+                <div class="resource-actions">
+                    <button class="btn download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button class="btn share-btn">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Upload Resource Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upload Resource</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form class="upload-form">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" placeholder="Enter resource title" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea placeholder="Describe your resource" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <select required>
+                        <option value="">Select Subject</option>
+                        <option value="cs">Computer Science</option>
+                        <option value="math">Mathematics</option>
+                        <option value="eng">Engineering</option>
+                        <option value="bus">Business</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <select required>
+                        <option value="">Select Type</option>
+                        <option value="notes">Notes</option>
+                        <option value="slides">Slides</option>
+                        <option value="books">Books</option>
+                        <option value="videos">Videos</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>File</label>
+                    <input type="file" required>
+                </div>
+                <button type="submit" class="btn upload-submit-btn">Upload Resource</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/resources.js"></script>
+</body>
+</html> 

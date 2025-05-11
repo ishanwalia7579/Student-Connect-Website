@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Connect - Chat</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emoji-mart@latest/css/emoji-mart.css">
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/emoji-mart.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>Student Connect</h1>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="connect.html">Connect</a>
+            <a href="resources.html">Resources</a>
+            <a href="chat.html" class="active">Chat</a>
+            <a href="events.html">Events</a>
+        </div>
+        <div class="nav-actions">
+            <div class="user-menu">
+                <img src="images/avatar.png" alt="Profile" class="avatar">
+                <div class="dropdown-menu">
+                    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Chat Section -->
+    <section class="chat-section">
+        <!-- Chat Sidebar -->
+        <div class="chat-sidebar">
+            <div class="sidebar-header">
+                <h2>Messages</h2>
+                <button class="new-chat-btn"><i class="fas fa-plus"></i> New Chat</button>
+            </div>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search messages...">
+            </div>
+            <div class="chat-list">
+                <div class="chat-item active">
+                    <div class="chat-avatar">
+                        <img src="images/avatar1.jpg" alt="User">
+                        <span class="status online"></span>
+                    </div>
+                    <div class="chat-info">
+                        <div class="chat-header">
+                            <h3>Study Group: AI & ML</h3>
+                            <span class="chat-time">2m ago</span>
+                        </div>
+                        <p class="chat-preview">Latest updates on the project...</p>
+                    </div>
+                    <div class="chat-meta">
+                        <span class="unread-count">3</span>
+                        <button class="chat-menu-btn"><i class="fas fa-ellipsis-v"></i></button>
+                    </div>
+                </div>
+                <!-- More chat items will be added dynamically -->
+            </div>
+        </div>
+
+        <!-- Chat Main -->
+        <div class="chat-main">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">
+                        <img src="images/avatar1.jpg" alt="User">
+                        <span class="status online"></span>
+                    </div>
+                    <div class="chat-info">
+                        <h2>Study Group: AI & ML</h2>
+                        <p>15 members, 8 online</p>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <button class="action-btn" title="Voice Call"><i class="fas fa-phone"></i></button>
+                    <button class="action-btn" title="Video Call"><i class="fas fa-video"></i></button>
+                    <button class="action-btn" title="More Options"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+            </div>
+
+            <div class="chat-messages">
+                <div class="message-date">
+                    <span>Today</span>
+                </div>
+                <div class="message-group">
+                    <div class="message-item received">
+                        <div class="message-avatar">
+                            <img src="images/avatar2.jpg" alt="User">
+                        </div>
+                        <div class="message-content">
+                            <div class="message-info">
+                                <span class="message-sender">Sarah Johnson</span>
+                                <span class="message-time">10:30 AM</span>
+                            </div>
+                            <div class="message-bubble">
+                                <p>Hey everyone! I've updated the project timeline. Check it out!</p>
+                                <div class="message-actions">
+                                    <button class="action-btn" title="Reply"><i class="fas fa-reply"></i></button>
+                                    <button class="action-btn" title="React"><i class="far fa-smile"></i></button>
+                                    <button class="action-btn" title="More"><i class="fas fa-ellipsis-h"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-item sent">
+                        <div class="message-content">
+                            <div class="message-info">
+                                <span class="message-sender">You</span>
+                                <span class="message-time">10:32 AM</span>
+                            </div>
+                            <div class="message-bubble">
+                                <p>Thanks for the update! I'll review it right away.</p>
+                                <div class="message-status">
+                                    <i class="fas fa-check-double"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <div class="input-actions">
+                    <button class="action-btn" title="Attach File"><i class="fas fa-paperclip"></i></button>
+                    <button class="action-btn" title="Add Emoji"><i class="far fa-smile"></i></button>
+                    <button class="action-btn" title="Record Voice"><i class="fas fa-microphone"></i></button>
+                </div>
+                <div class="message-input">
+                    <textarea placeholder="Type a message..." rows="1"></textarea>
+                    <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Info Sidebar -->
+        <div class="chat-info-sidebar">
+            <div class="sidebar-header">
+                <h2>Group Info</h2>
+                <button class="close-sidebar-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="group-info">
+                <div class="group-avatar">
+                    <img src="images/group1.jpg" alt="Group">
+                </div>
+                <h3>AI & Machine Learning</h3>
+                <p>Study group for AI and ML enthusiasts</p>
+            </div>
+            <div class="members-section">
+                <h3>Members (15)</h3>
+                <div class="members-list">
+                    <div class="member-item">
+                        <div class="member-avatar">
+                            <img src="images/avatar1.jpg" alt="Member">
+                            <span class="status online"></span>
+                        </div>
+                        <div class="member-info">
+                            <h4>John Doe</h4>
+                            <p>Group Admin</p>
+                        </div>
+                    </div>
+                    <!-- More members will be added dynamically -->
+                </div>
+            </div>
+            <div class="shared-files">
+                <h3>Shared Files</h3>
+                <div class="files-list">
+                    <div class="file-item">
+                        <div class="file-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="file-info">
+                            <h4>Project Timeline.pdf</h4>
+                            <p>2.5 MB • Shared by Sarah</p>
+                        </div>
+                        <button class="download-btn"><i class="fas fa-download"></i></button>
+                    </div>
+                    <!-- More files will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Chat Modal -->
+    <div class="modal" id="newChatModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Chat</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="newChatForm">
+                <div class="form-group">
+                    <label>Chat Type</label>
+                    <div class="chat-type-options">
+                        <label class="chat-type-option">
+                            <input type="radio" name="chatType" value="direct" checked>
+                            <span class="option-content">
+                                <i class="fas fa-user"></i>
+                                <span>Direct Message</span>
+                            </span>
+                        </label>
+                        <label class="chat-type-option">
+                            <input type="radio" name="chatType" value="group">
+                            <span class="option-content">
+                                <i class="fas fa-users"></i>
+                                <span>Group Chat</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="chatName">Name</label>
+                    <input type="text" id="chatName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="chatMembers">Members</label>
+                    <div class="members-select">
+                        <div class="selected-members"></div>
+                        <input type="text" id="memberSearch" placeholder="Search members...">
+                        <div class="members-dropdown"></div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary-btn" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Create Chat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html> 

@@ -1,0 +1,484 @@
+/* Connect Page Styles */
+.connect-container {
+    padding: 2rem 5%;
+    margin-top: 60px;
+}
+
+/* Connect Section */
+.connect-section {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    height: calc(100vh - 70px);
+    background-color: var(--bg-color);
+}
+
+/* Filters Sidebar */
+.filters-sidebar {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-group h3 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.filter-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid var(--border-color);
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.filter-option input[type="checkbox"]:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.filter-option input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.filter-option span {
+    color: var(--text-color);
+    font-size: 0.875rem;
+}
+
+.apply-filters-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.apply-filters-btn:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px);
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    background-color: var(--card-bg);
+    padding: 0.75rem;
+    border-radius: 8px;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    background: none;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.search-bar input::placeholder {
+    color: var(--text-muted);
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.search-btn:hover {
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+}
+
+.view-options {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.view-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.view-btn:hover,
+.view-btn.active {
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+}
+
+/* Students Grid */
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.student-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.student-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.student-header {
+    position: relative;
+    width: fit-content;
+}
+
+.student-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.student-status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--card-bg);
+}
+
+.student-status.online {
+    background-color: #4CAF50;
+}
+
+.student-status.offline {
+    background-color: #9E9E9E;
+}
+
+.student-info h3 {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.student-course,
+.student-year {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+}
+
+.student-interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.interest-tag {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+.student-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.connect-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.connect-btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.message-btn {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.message-btn:hover {
+    background-color: var(--border-color);
+}
+
+/* Study Groups Section */
+.study-groups-section {
+    margin-top: 2rem;
+}
+
+.study-groups-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.study-groups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.group-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.group-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.group-header {
+    position: relative;
+    height: 120px;
+}
+
+.group-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.group-members {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.member-avatars {
+    display: flex;
+    align-items: center;
+}
+
+.member-avatars img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-left: -8px;
+}
+
+.member-avatars img:first-child {
+    margin-left: 0;
+}
+
+.more-members {
+    margin-left: 8px;
+    font-size: 0.75rem;
+}
+
+.group-info {
+    padding: 1.5rem;
+}
+
+.group-info h3 {
+    margin: 0;
+    color: var(--text-color);
+}
+
+.group-info p {
+    margin: 0.5rem 0;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
+.group-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tag {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+.group-actions {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.join-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.join-btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+/* Create Group Modal */
+.tags-input {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.tags-input input {
+    border: none;
+    background: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    width: 100%;
+}
+
+.tags-input input:focus {
+    outline: none;
+}
+
+.selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .connect-section {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-sidebar {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        bottom: 0;
+        width: 300px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 100;
+    }
+
+    .filters-sidebar.active {
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .connect-section {
+        padding: 1rem;
+    }
+
+    .students-grid,
+    .study-groups-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dark Mode */
+[data-theme="dark"] .student-card,
+[data-theme="dark"] .group-card,
+[data-theme="dark"] .filters-sidebar,
+[data-theme="dark"] .search-bar {
+    background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .interest-tag,
+[data-theme="dark"] .tag {
+    background-color: var(--bg-color);
+}
+
+[data-theme="dark"] .message-btn {
+    background-color: var(--bg-color);
+}
+
+[data-theme="dark"] .message-btn:hover {
+    background-color: var(--border-color);
+} 

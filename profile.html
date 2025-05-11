@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Connect - Profile</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>Student Connect</h1>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="connect.html">Connect</a>
+            <a href="resources.html">Resources</a>
+            <a href="chat.html">Chat</a>
+            <a href="events.html">Events</a>
+        </div>
+        <div class="nav-actions">
+            <div class="user-menu">
+                <img src="images/avatar.png" alt="Profile" class="avatar">
+                <div class="dropdown-menu">
+                    <a href="profile.html" class="active"><i class="fas fa-user"></i> Profile</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="profile-header">
+            <div class="cover-photo">
+                <img src="images/cover.jpg" alt="Cover Photo">
+                <button class="edit-cover"><i class="fas fa-camera"></i></button>
+            </div>
+            <div class="profile-info">
+                <div class="profile-picture">
+                    <img src="images/avatar.png" alt="Profile Picture">
+                    <button class="edit-avatar"><i class="fas fa-camera"></i></button>
+                </div>
+                <div class="profile-details">
+                    <h1 id="userName">John Doe</h1>
+                    <p id="userEmail">john.doe@example.com</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-value">15</span>
+                            <span class="stat-label">Study Groups</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">42</span>
+                            <span class="stat-label">Resources</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">128</span>
+                            <span class="stat-label">Connections</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="edit-profile-btn"><i class="fas fa-edit"></i> Edit Profile</button>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-sidebar">
+                <div class="sidebar-section">
+                    <h3>About</h3>
+                    <p id="userBio">Computer Science student passionate about AI and Machine Learning. Love to code and solve problems.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" title="Portfolio"><i class="fas fa-globe"></i></a>
+                        <button class="add-social-link"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Achievements</h3>
+                    <div class="achievements-list" id="achievementsList">
+                        <div class="achievement-item">
+                            <div class="achievement-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="achievement-info">
+                                <h4>Top Contributor</h4>
+                                <p>Shared 50+ resources</p>
+                                <span class="achievement-date">Earned 2 months ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="add-achievement-btn"><i class="fas fa-plus"></i> Add Achievement</button>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Education</h3>
+                    <div class="education-list" id="educationList">
+                        <div class="education-item">
+                            <h4>Bachelor of Computer Science</h4>
+                            <p>University of Technology</p>
+                            <span>2020 - Present</span>
+                        </div>
+                    </div>
+                    <button class="add-education-btn"><i class="fas fa-plus"></i> Add Education</button>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Skills</h3>
+                    <div class="skills-list" id="skillsList">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Web Development</span>
+                    </div>
+                    <button class="add-skill-btn"><i class="fas fa-plus"></i> Add Skill</button>
+                </div>
+            </div>
+
+            <div class="profile-main">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="activity">Activity</button>
+                    <button class="tab-btn" data-tab="groups">Study Groups</button>
+                    <button class="tab-btn" data-tab="resources">Resources</button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Activity Tab -->
+                    <div class="tab-pane active" id="activity">
+                        <div class="activity-feed">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Joined Study Group</h4>
+                                    <p>Joined the AI & Machine Learning Study Group</p>
+                                    <span class="activity-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <h4>Shared Resource</h4>
+                                    <p>Shared "Machine Learning Basics" notes</p>
+                                    <span class="activity-time">1 day ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Study Groups Tab -->
+                    <div class="tab-pane" id="groups">
+                        <div class="groups-grid">
+                            <div class="group-card">
+                                <div class="group-header">
+                                    <img src="images/group1.jpg" alt="Group">
+                                    <h3>AI & Machine Learning</h3>
+                                </div>
+                                <p>Study group for AI and ML enthusiasts</p>
+                                <div class="group-members">
+                                    <span>15 members</span>
+                                    <span>Active now</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resources Tab -->
+                    <div class="tab-pane" id="resources">
+                        <div class="resources-grid">
+                            <div class="resource-card">
+                                <div class="resource-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="resource-info">
+                                    <h3>Machine Learning Basics</h3>
+                                    <p>Comprehensive notes on ML fundamentals</p>
+                                    <div class="resource-meta">
+                                        <span><i class="fas fa-download"></i> 42 downloads</span>
+                                        <span><i class="fas fa-star"></i> 4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="editName">Full Name</label>
+                    <input type="text" id="editName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="editBio">Bio</label>
+                    <textarea id="editBio" name="bio" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">Email</label>
+                    <input type="email" id="editEmail" name="email" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary-btn" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Education Modal -->
+    <div class="modal" id="addEducationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Education</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="addEducationForm">
+                <div class="form-group">
+                    <label for="degree">Degree/Course</label>
+                    <input type="text" id="degree" name="degree" required>
+                </div>
+                <div class="form-group">
+                    <label for="institution">Institution</label>
+                    <input type="text" id="institution" name="institution" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="startYear">Start Year</label>
+                        <input type="number" id="startYear" name="startYear" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endYear">End Year</label>
+                        <input type="number" id="endYear" name="endYear">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary-btn" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Add Education</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Skill Modal -->
+    <div class="modal" id="addSkillModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Skill</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="addSkillForm">
+                <div class="form-group">
+                    <label for="skill">Skill</label>
+                    <input type="text" id="skill" name="skill" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary-btn" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Add Skill</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Achievement Modal -->
+    <div class="modal" id="addAchievementModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Achievement</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="addAchievementForm">
+                <div class="form-group">
+                    <label for="achievementTitle">Title</label>
+                    <input type="text" id="achievementTitle" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="achievementDescription">Description</label>
+                    <textarea id="achievementDescription" name="description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="achievementDate">Date Earned</label>
+                    <input type="date" id="achievementDate" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="achievementIcon">Icon</label>
+                    <select id="achievementIcon" name="icon" required>
+                        <option value="trophy">Trophy</option>
+                        <option value="medal">Medal</option>
+                        <option value="star">Star</option>
+                        <option value="certificate">Certificate</option>
+                        <option value="award">Award</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary-btn" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Add Achievement</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Social Link Modal -->
+    <div class="modal" id="addSocialLinkModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Social Link</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="addSocialLinkForm">
+                <div class="form-group">
+                    <label for="socialPlatform">Platform</label>
+                    <select id="socialPlatform" name="platform" required>
+                        <option value="github">GitHub</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="twitter">Twitter</option>
+                        <option value="portfolio">Portfolio</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="socialUrl">URL</label>
+                    <input type="url" id="socialUrl" name="url" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary-btn" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Add Link</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html> 

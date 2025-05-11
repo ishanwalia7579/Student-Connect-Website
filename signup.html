@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Connect - Sign Up</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>Student Connect</h1>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="connect.html">Connect</a>
+            <a href="resources.html">Resources</a>
+            <a href="chat.html">Chat</a>
+            <a href="events.html">Events</a>
+        </div>
+        <div class="nav-actions">
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sign Up Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h2>Create Account</h2>
+                <p>Join Student Connect to start connecting with fellow students</p>
+            </div>
+            <form class="auth-form" id="signupForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="firstName" required placeholder="Enter your first name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="lastName" required placeholder="Enter your last name">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" required placeholder="Enter your email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" required placeholder="Create a password">
+                        <button type="button" class="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" required placeholder="Confirm your password">
+                        <button type="button" class="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="terms-checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="btn primary-btn">Create Account</button>
+            </form>
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Sign In</a></p>
+                <div class="social-login">
+                    <p>Or sign up with</p>
+                    <div class="social-buttons">
+                        <button class="btn social-btn google">
+                            <i class="fab fa-google"></i> Google
+                        </button>
+                        <button class="btn social-btn facebook">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html> 

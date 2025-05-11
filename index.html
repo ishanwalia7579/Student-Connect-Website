@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Connect - Home</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>Student Connect</h1>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="connect.html">Connect</a>
+            <a href="resources.html">Resources</a>
+            <a href="chat.html">Chat</a>
+            <a href="events.html">Events</a>
+        </div>
+        <div class="nav-actions">
+            <div class="user-menu">
+                <img src="images/avatar.png" alt="Profile" class="avatar">
+                <div class="dropdown-menu">
+                    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn login-btn">Login</a>
+                <a href="signup.html" class="btn signup-btn">Sign Up</a>
+            </div>
+        </div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Student Connect</h1>
+            <p>Connect with fellow students, share resources, and enhance your learning experience</p>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for study groups, resources, or events...">
+                    <button class="search-btn">Search</button>
+                </div>
+                <div class="search-tags">
+                    <span>Popular:</span>
+                    <a href="#">CS101</a>
+                    <a href="#">Math 201</a>
+                    <a href="#">Study Groups</a>
+                    <a href="#">Workshops</a>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="connect.html" class="btn primary-btn">
+                    <i class="fas fa-users"></i> Find Study Groups
+                </a>
+                <a href="resources.html" class="btn secondary-btn">
+                    <i class="fas fa-book"></i> Browse Resources
+                </a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">1,234</span>
+                <span class="stat-label">Active Students</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">567</span>
+                <span class="stat-label">Study Groups</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">890</span>
+                <span class="stat-label">Resources Shared</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Section -->
+    <section class="quick-access">
+        <h2>Quick Access</h2>
+        <div class="quick-access-grid">
+            <a href="connect.html" class="quick-access-card">
+                <i class="fas fa-users"></i>
+                <span>Study Groups</span>
+                <p>Join or create study groups</p>
+            </a>
+            <a href="resources.html" class="quick-access-card">
+                <i class="fas fa-book"></i>
+                <span>Resources</span>
+                <p>Access study materials</p>
+            </a>
+            <a href="chat.html" class="quick-access-card">
+                <i class="fas fa-comments"></i>
+                <span>Chat</span>
+                <p>Connect with peers</p>
+            </a>
+            <a href="events.html" class="quick-access-card">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Events</span>
+                <p>Discover campus events</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Recent Activity Section -->
+    <section class="recent-activity">
+        <div class="section-header">
+            <h2>Recent Activity</h2>
+            <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="activity-grid">
+            <div class="activity-card">
+                <div class="activity-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="activity-content">
+                    <h3>New Study Group</h3>
+                    <p>CS101 Study Group was created</p>
+                    <span class="activity-time">2 hours ago</span>
+                </div>
+                <button class="join-btn">Join</button>
+            </div>
+            <div class="activity-card">
+                <div class="activity-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="activity-content">
+                    <h3>New Resource</h3>
+                    <p>Math 201 Slides were uploaded</p>
+                    <span class="activity-time">5 hours ago</span>
+                </div>
+                <button class="download-btn">Download</button>
+            </div>
+            <div class="activity-card">
+                <div class="activity-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="activity-content">
+                    <h3>New Event</h3>
+                    <p>Tech Workshop scheduled</p>
+                    <span class="activity-time">1 day ago</span>
+                </div>
+                <button class="register-btn">Register</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Student Connect</h3>
+                <p>Connecting students for better learning</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="connect.html">Study Groups</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="chat.html">Chat</a></li>
+                    <li><a href="events.html">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> support@studentconnect.com</li>
+                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Campus Drive, University City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Student Connect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html> 

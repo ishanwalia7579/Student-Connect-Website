@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect - Student Connect</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/connect.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html">Student Connect</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="connect.html" class="active">Connect</a>
+            <a href="chat.html">Chat</a>
+            <a href="profile.html">Profile</a>
+        </div>
+        <div class="nav-actions">
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="user-menu">
+                <img src="images/avatar.jpg" alt="User Avatar" class="avatar">
+                <div class="dropdown-menu">
+                    <a href="profile.html">Profile</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="#" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="connect-section">
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
+            <div class="filter-group">
+                <h3>Course</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" value="computer-science">
+                        <span>Computer Science</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="engineering">
+                        <span>Engineering</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="business">
+                        <span>Business</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="arts">
+                        <span>Arts & Humanities</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Year Level</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" value="first-year">
+                        <span>First Year</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="second-year">
+                        <span>Second Year</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="third-year">
+                        <span>Third Year</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="fourth-year">
+                        <span>Fourth Year</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Study Interests</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" value="programming">
+                        <span>Programming</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="ai">
+                        <span>AI & Machine Learning</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="web-dev">
+                        <span>Web Development</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="data-science">
+                        <span>Data Science</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="apply-filters-btn">
+                Apply Filters
+            </button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Search and View Options -->
+            <div class="search-bar">
+                <input type="text" placeholder="Search students or study groups...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="view-options">
+                <button class="view-btn active" data-view="grid">
+                    <i class="fas fa-th-large"></i>
+                </button>
+                <button class="view-btn" data-view="list">
+                    <i class="fas fa-list"></i>
+                </button>
+            </div>
+
+            <!-- Students Section -->
+            <section class="students-section">
+                <div class="section-header">
+                    <h2>Students</h2>
+                    <button class="create-btn" onclick="openModal('createGroupModal')">
+                        <i class="fas fa-plus"></i> Create Study Group
+                    </button>
+                </div>
+                <div class="students-grid">
+                    <!-- Student cards will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Study Groups Section -->
+            <section class="study-groups-section">
+                <h2>Study Groups</h2>
+                <div class="study-groups-grid">
+                    <!-- Study group cards will be dynamically added here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Create Group Modal -->
+    <div id="createGroupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Study Group</h2>
+                <button class="close-btn" onclick="closeModal('createGroupModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="createGroupForm">
+                <div class="form-group">
+                    <label for="groupName">Group Name</label>
+                    <input type="text" id="groupName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="groupDescription">Description</label>
+                    <textarea id="groupDescription" name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="groupCourse">Course</label>
+                    <select id="groupCourse" name="course" required>
+                        <option value="">Select a course</option>
+                        <option value="computer-science">Computer Science</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="business">Business</option>
+                        <option value="arts">Arts & Humanities</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="groupTags">Tags</label>
+                    <div class="tags-input">
+                        <input type="text" id="groupTags" placeholder="Add tags (press Enter)">
+                    </div>
+                    <div class="selected-tags">
+                        <!-- Tags will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="closeModal('createGroupModal')">Cancel</button>
+                    <button type="submit" class="submit-btn">Create Group</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/connect.js"></script>
+</body>
+</html> 

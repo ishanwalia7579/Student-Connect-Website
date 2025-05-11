@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Connect - Events</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/events.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <h1>Student Connect</h1>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="connect.html">Connect</a>
+            <a href="resources.html">Resources</a>
+            <a href="chat.html">Chat</a>
+            <a href="events.html" class="active">Events</a>
+        </div>
+        <div class="user-menu">
+            <img src="images/avatar.png" alt="Profile" class="avatar">
+            <div class="dropdown-menu">
+                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                <a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+        <div class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="events-container">
+        <!-- Calendar Section -->
+        <section class="calendar-section">
+            <div class="calendar-header">
+                <h2>Events Calendar</h2>
+                <div class="calendar-controls">
+                    <button class="btn prev-month"><i class="fas fa-chevron-left"></i></button>
+                    <h3 class="current-month">September 2024</h3>
+                    <button class="btn next-month"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="view-options">
+                    <button class="btn active" data-view="month">Month</button>
+                    <button class="btn" data-view="week">Week</button>
+                    <button class="btn" data-view="day">Day</button>
+                </div>
+            </div>
+            <div class="calendar-grid">
+                <!-- Calendar days will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Events List Section -->
+        <section class="events-list-section">
+            <div class="events-header">
+                <h2>Upcoming Events</h2>
+                <button class="btn primary-btn create-event">
+                    <i class="fas fa-plus"></i> Create Event
+                </button>
+            </div>
+            <div class="events-list">
+                <!-- Events will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Create Event Modal -->
+    <div class="modal" id="createEventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Event</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="createEventForm">
+                <div class="form-group">
+                    <label for="eventTitle">Event Title</label>
+                    <input type="text" id="eventTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Date</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventStartTime">Start Time</label>
+                        <input type="time" id="eventStartTime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventEndTime">End Time</label>
+                        <input type="time" id="eventEndTime" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eventLocation">Location</label>
+                    <input type="text" id="eventLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Description</label>
+                    <textarea id="eventDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="eventType">Event Type</label>
+                    <select id="eventType" required>
+                        <option value="workshop">Workshop</option>
+                        <option value="seminar">Seminar</option>
+                        <option value="study-group">Study Group</option>
+                        <option value="social">Social Event</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn secondary-btn cancel-btn">Cancel</button>
+                    <button type="submit" class="btn primary-btn">Create Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Event Details Modal -->
+    <div class="modal" id="eventDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Event Details</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="event-details">
+                <!-- Event details will be populated by JavaScript -->
+            </div>
+            <div class="modal-actions">
+                <button class="btn secondary-btn edit-event">Edit</button>
+                <button class="btn danger-btn delete-event">Delete</button>
+                <button class="btn primary-btn register-event">Register</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/events.js"></script>
+</body>
+</html> 
