@@ -42,23 +42,46 @@
         <section class="search-section">
             <div class="search-bar">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search for study materials...">
+                <input type="text" placeholder="Search for study materials, topics, or keywords...">
             </div>
             <div class="filters">
-                <select class="filter-select">
-                    <option value="">Subject</option>
-                    <option value="cs">Computer Science</option>
-                    <option value="math">Mathematics</option>
-                    <option value="eng">Engineering</option>
-                    <option value="bus">Business</option>
-                </select>
-                <select class="filter-select">
-                    <option value="">Type</option>
-                    <option value="notes">Notes</option>
-                    <option value="slides">Slides</option>
-                    <option value="books">Books</option>
-                    <option value="videos">Videos</option>
-                </select>
+                <div class="filter-group">
+                    <select class="filter-select">
+                        <option value="">Subject</option>
+                        <option value="cs">Computer Science</option>
+                        <option value="math">Mathematics</option>
+                        <option value="eng">Engineering</option>
+                        <option value="bus">Business</option>
+                        <option value="sci">Science</option>
+                        <option value="art">Arts & Humanities</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">Type</option>
+                        <option value="notes">Notes</option>
+                        <option value="slides">Slides</option>
+                        <option value="books">Books</option>
+                        <option value="videos">Videos</option>
+                        <option value="code">Code Examples</option>
+                        <option value="projects">Projects</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">Sort By</option>
+                        <option value="recent">Most Recent</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="downloads">Most Downloaded</option>
+                    </select>
+                </div>
+                <div class="filter-tags">
+                    <span class="tag">#beginner</span>
+                    <span class="tag">#advanced</span>
+                    <span class="tag">#tutorial</span>
+                    <span class="tag">#exam-prep</span>
+                    <span class="tag">#sql</span>
+                    <span class="tag">#normalization</span>
+                    <span class="tag">#database-design</span>
+                    <span class="tag">#transactions</span>
+                </div>
                 <button class="btn upload-btn">
                     <i class="fas fa-upload"></i> Upload Resource
                 </button>
@@ -73,14 +96,34 @@
                     <i class="fas fa-file-pdf"></i>
                 </div>
                 <div class="resource-info">
-                    <h3>CS101 Lecture Notes</h3>
+                    <div class="resource-header">
+                        <h3>CS101 Lecture Notes</h3>
+                        <div class="resource-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.8</span>
+                            <span class="rating-count">(128)</span>
+                        </div>
+                    </div>
                     <p class="resource-meta">
                         <span class="subject">Computer Science</span>
                         <span class="uploader">By John Doe</span>
+                        <span class="date">2 days ago</span>
                     </p>
                     <p class="resource-description">Comprehensive notes covering all topics from CS101 lectures</p>
+                    <div class="resource-tags">
+                        <span class="tag">#beginner</span>
+                        <span class="tag">#lecture-notes</span>
+                    </div>
+                    <div class="resource-stats">
+                        <span><i class="fas fa-download"></i> 1.2k</span>
+                        <span><i class="fas fa-eye"></i> 3.5k</span>
+                        <span><i class="fas fa-comment"></i> 45</span>
+                    </div>
                 </div>
                 <div class="resource-actions">
+                    <button class="btn preview-btn">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
                     <button class="btn download-btn">
                         <i class="fas fa-download"></i> Download
                     </button>
@@ -96,14 +139,34 @@
                     <i class="fas fa-file-powerpoint"></i>
                 </div>
                 <div class="resource-info">
-                    <h3>Math 201 Slides</h3>
+                    <div class="resource-header">
+                        <h3>Math 201 Slides</h3>
+                        <div class="resource-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.5</span>
+                            <span class="rating-count">(89)</span>
+                        </div>
+                    </div>
                     <p class="resource-meta">
                         <span class="subject">Mathematics</span>
                         <span class="uploader">By Jane Smith</span>
+                        <span class="date">1 week ago</span>
                     </p>
-                    <p class="resource-description">Complete set of slides for Math 201 course</p>
+                    <p class="resource-description">Complete set of slides for Math 201 course with practice problems</p>
+                    <div class="resource-tags">
+                        <span class="tag">#intermediate</span>
+                        <span class="tag">#slides</span>
+                    </div>
+                    <div class="resource-stats">
+                        <span><i class="fas fa-download"></i> 856</span>
+                        <span><i class="fas fa-eye"></i> 2.1k</span>
+                        <span><i class="fas fa-comment"></i> 32</span>
+                    </div>
                 </div>
                 <div class="resource-actions">
+                    <button class="btn preview-btn">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
                     <button class="btn download-btn">
                         <i class="fas fa-download"></i> Download
                     </button>
@@ -119,14 +182,78 @@
                     <i class="fas fa-video"></i>
                 </div>
                 <div class="resource-info">
-                    <h3>Engineering Tutorial</h3>
+                    <div class="resource-header">
+                        <h3>Engineering Tutorial</h3>
+                        <div class="resource-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.9</span>
+                            <span class="rating-count">(156)</span>
+                        </div>
+                    </div>
                     <p class="resource-meta">
                         <span class="subject">Engineering</span>
                         <span class="uploader">By Mike Johnson</span>
+                        <span class="date">3 days ago</span>
                     </p>
-                    <p class="resource-description">Video tutorial on advanced engineering concepts</p>
+                    <p class="resource-description">Video tutorial on advanced engineering concepts with practical examples</p>
+                    <div class="resource-tags">
+                        <span class="tag">#advanced</span>
+                        <span class="tag">#video</span>
+                    </div>
+                    <div class="resource-stats">
+                        <span><i class="fas fa-download"></i> 2.3k</span>
+                        <span><i class="fas fa-eye"></i> 5.7k</span>
+                        <span><i class="fas fa-comment"></i> 78</span>
+                    </div>
                 </div>
                 <div class="resource-actions">
+                    <button class="btn preview-btn">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                    <button class="btn download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button class="btn share-btn">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+            </div>
+
+            <!-- Add a new DBMS Resource Card -->
+            <div class="resource-card">
+                <div class="resource-type">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="resource-info">
+                    <div class="resource-header">
+                        <h3>Database Design Patterns</h3>
+                        <div class="resource-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.9</span>
+                            <span class="rating-count">(142)</span>
+                        </div>
+                    </div>
+                    <p class="resource-meta">
+                        <span class="subject">Database Management Systems</span>
+                        <span class="uploader">By Sarah Wilson</span>
+                        <span class="date">1 day ago</span>
+                    </p>
+                    <p class="resource-description">Comprehensive guide to database design patterns, best practices, and optimization techniques</p>
+                    <div class="resource-tags">
+                        <span class="tag">#database-design</span>
+                        <span class="tag">#patterns</span>
+                        <span class="tag">#optimization</span>
+                    </div>
+                    <div class="resource-stats">
+                        <span><i class="fas fa-download"></i> 1.5k</span>
+                        <span><i class="fas fa-eye"></i> 4.2k</span>
+                        <span><i class="fas fa-comment"></i> 67</span>
+                    </div>
+                </div>
+                <div class="resource-actions">
+                    <button class="btn preview-btn">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
                     <button class="btn download-btn">
                         <i class="fas fa-download"></i> Download
                     </button>
@@ -154,32 +281,67 @@
                     <label>Description</label>
                     <textarea placeholder="Describe your resource" required></textarea>
                 </div>
-                <div class="form-group">
-                    <label>Subject</label>
-                    <select required>
-                        <option value="">Select Subject</option>
-                        <option value="cs">Computer Science</option>
-                        <option value="math">Mathematics</option>
-                        <option value="eng">Engineering</option>
-                        <option value="bus">Business</option>
-                    </select>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <select name="subject" required>
+                            <option value="">Select Subject</option>
+                            <option value="cs">Computer Science</option>
+                            <option value="math">Mathematics</option>
+                            <option value="eng">Engineering</option>
+                            <option value="bus">Business</option>
+                            <option value="sci">Science</option>
+                            <option value="art">Arts & Humanities</option>
+                            <option value="dbms">Database Management Systems</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select required>
+                            <option value="">Select Type</option>
+                            <option value="notes">Notes</option>
+                            <option value="slides">Slides</option>
+                            <option value="books">Books</option>
+                            <option value="videos">Videos</option>
+                            <option value="code">Code Examples</option>
+                            <option value="projects">Projects</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label>Type</label>
-                    <select required>
-                        <option value="">Select Type</option>
-                        <option value="notes">Notes</option>
-                        <option value="slides">Slides</option>
-                        <option value="books">Books</option>
-                        <option value="videos">Videos</option>
-                    </select>
+                    <label>Tags</label>
+                    <input type="text" placeholder="Add tags (comma separated)">
                 </div>
                 <div class="form-group">
                     <label>File</label>
-                    <input type="file" required>
+                    <div class="file-upload-area" id="dropZone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag and drop your file here or click to browse</p>
+                        <input type="file" required>
+                    </div>
                 </div>
-                <button type="submit" class="btn upload-submit-btn">Upload Resource</button>
+                <div class="form-group">
+                    <label>Preview Image (Optional)</label>
+                    <input type="file" accept="image/*">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn cancel-btn">Cancel</button>
+                    <button type="submit" class="btn upload-submit-btn">Upload Resource</button>
+                </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content preview-content">
+            <div class="modal-header">
+                <h2>Resource Preview</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="preview-container">
+                <!-- Preview content will be dynamically loaded here -->
+            </div>
         </div>
     </div>
 

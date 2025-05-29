@@ -1,140 +1,326 @@
+// API endpoints
+const API_BASE_URL = 'http://localhost:3000/api';
+const RESOURCES_ENDPOINT = `${API_BASE_URL}/resources`;
+
 // DOM Elements
-const uploadBtn = document.querySelector('.upload-btn');
-const uploadModal = document.getElementById('uploadModal');
-const closeModalBtn = document.querySelector('.close-modal');
-const uploadForm = document.querySelector('.upload-form');
-const searchInput = document.querySelector('.search-bar input');
+const searchInput = document.getElementById('search-input');
 const filterSelects = document.querySelectorAll('.filter-select');
-const downloadButtons = document.querySelectorAll('.download-btn');
-const shareButtons = document.querySelectorAll('.share-btn');
+const filterTags = document.querySelectorAll('.filter-tag');
+const uploadBtn = document.getElementById('upload-btn');
+const uploadModal = document.getElementById('upload-modal');
+const closeModalBtns = document.querySelectorAll('.close-modal');
+const previewModal = document.getElementById('preview-modal');
+const resourcesContainer = document.querySelector('.resources-grid');
+const uploadForm = document.getElementById('upload-form');
+const fileUploadArea = document.getElementById('file-upload-area');
+const fileInput = document.getElementById('file-input');
+const fileInfo = document.getElementById('file-info');
+const fileInfoContent = document.getElementById('file-info-content');
+const fileName = document.getElementById('file-name');
+const fileSize = document.getElementById('file-size');
+const removeFileBtn = document.getElementById('remove-file');
+const uploadSubmitBtn = document.getElementById('upload-submit-btn');
 
-// Modal Functions
-function openModal() {
-    uploadModal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-    uploadModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
+// State
+let resources = [];
+let filteredResources = [];
 
 // Event Listeners
-uploadBtn.addEventListener('click', openModal);
-closeModalBtn.addEventListener('click', closeModal);
-
-// Close modal when clicking outside
-window.addEventListener('click', (e) => {
-    if (e.target === uploadModal) {
-        closeModal();
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    loadResources();
+    setupEventListeners();
 });
 
-// Upload Form Handler
-if (uploadForm) {
+function setupEventListeners() {
+    // Search input with debounce
+    searchInput.addEventListener('input', debounce(handleSearch, 300));
+
+    // Filter changes
+    filterSelects.forEach(select => {
+        select.addEventListener('change', handleFilters);
+    });
+
+    // Filter tags
+    filterTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            const filterType = tag.dataset.filter;
+            const filterValue = tag.dataset.value;
+            const select = document.querySelector(`select[data-filter="${filterType}"]`);
+            if (select) {
+                select.value = filterValue;
+                handleFilters();
+            }
+        });
+    });
+
+    // Modal controls
+    uploadBtn.addEventListener('click', () => {
+        uploadModal.classList.add('active');
+    });
+
+    closeModalBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            uploadModal.classList.remove('active');
+            previewModal.classList.remove('active');
+            resetUploadForm();
+        });
+    });
+
+    // File upload handling
+    setupFileUpload();
+}
+
+// Load resources from API
+async function loadResources() {
+    try {
+        const response = await fetch(RESOURCES_ENDPOINT);
+        if (!response.ok) throw new Error('Failed to load resources');
+        
+        resources = await response.json();
+        filteredResources = [...resources];
+        renderResources();
+    } catch (error) {
+        console.error('Error loading resources:', error);
+        showError('Failed to load resources. Please try again later.');
+    }
+}
+
+// Search functionality
+function handleSearch() {
+    const searchTerm = searchInput.value.toLowerCase();
+    filteredResources = resources.filter(resource => 
+        resource.title.toLowerCase().includes(searchTerm) ||
+        resource.description.toLowerCase().includes(searchTerm) ||
+        resource.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+    );
+    renderResources();
+}
+
+// Filter functionality
+function handleFilters() {
+    const subject = document.getElementById('subject-filter').value;
+    const type = document.getElementById('type-filter').value;
+    const sort = document.getElementById('sort-filter').value;
+
+    filteredResources = resources.filter(resource => {
+        if (subject && resource.subject !== subject) return false;
+        if (type && resource.type !== type) return false;
+        return true;
+    });
+
+    // Sort resources
+    switch (sort) {
+        case 'recent':
+            filteredResources.sort((a, b) => new Date(b.date) - new Date(a.date));
+            break;
+        case 'popular':
+            filteredResources.sort((a, b) => b.downloads - a.downloads);
+            break;
+        case 'rating':
+            filteredResources.sort((a, b) => b.rating - a.rating);
+            break;
+    }
+
+    renderResources();
+}
+
+// File upload handling
+function setupFileUpload() {
+    const dropZone = fileUploadArea;
+
+    // Drag and drop events
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(e) {
+        dropZone.classList.add('drag-over');
+    }
+
+    function unhighlight(e) {
+        dropZone.classList.remove('drag-over');
+    }
+
+    dropZone.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles(files);
+    }
+
+    fileInput.addEventListener('change', (e) => {
+        handleFiles(e.target.files);
+    });
+
+    removeFileBtn.addEventListener('click', removeFile);
+
+    // Form submission
     uploadForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        if (!fileInput.files[0]) {
+            showError('Please select a file to upload');
+            return;
+        }
+
         const formData = new FormData(uploadForm);
         
         try {
-            // Here you would typically make an API call to your backend
-            console.log('Uploading resource:', Object.fromEntries(formData));
-            
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            // Close modal and show success message
-            closeModal();
-            alert('Resource uploaded successfully!');
-            uploadForm.reset();
-            
-            // Refresh the page or update the UI
-            location.reload();
-        } catch (error) {
-            console.error('Failed to upload resource:', error);
-            alert('Failed to upload resource. Please try again.');
-        }
-    });
-}
+            uploadSubmitBtn.disabled = true;
+            uploadSubmitBtn.innerHTML = '<div class="spinner"></div> Uploading...';
 
-// Search Functionality
-if (searchInput) {
-    searchInput.addEventListener('input', debounce((e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        filterResources(searchTerm);
-    }, 300));
-}
+            const response = await fetch(`${RESOURCES_ENDPOINT}`, {
+                method: 'POST',
+                body: formData
+            });
 
-// Filter Functionality
-filterSelects.forEach(select => {
-    select.addEventListener('change', () => {
-        const subjectFilter = filterSelects[0].value;
-        const typeFilter = filterSelects[1].value;
-        filterResources(searchInput.value.toLowerCase(), subjectFilter, typeFilter);
-    });
-});
-
-// Download Buttons
-downloadButtons.forEach(button => {
-    button.addEventListener('click', async () => {
-        const resourceCard = button.closest('.resource-card');
-        const resourceName = resourceCard.querySelector('h3').textContent;
-        
-        try {
-            // Here you would typically make an API call to your backend
-            console.log('Downloading resource:', resourceName);
-            
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 500));
-            
-            // Show success message
-            alert(`Downloading ${resourceName}...`);
-            
-            // In a real application, you would trigger the file download here
-            // window.location.href = `/api/resources/download/${resourceId}`;
-        } catch (error) {
-            console.error('Failed to download resource:', error);
-            alert('Failed to download resource. Please try again.');
-        }
-    });
-});
-
-// Share Buttons
-shareButtons.forEach(button => {
-    button.addEventListener('click', async () => {
-        const resourceCard = button.closest('.resource-card');
-        const resourceName = resourceCard.querySelector('h3').textContent;
-        
-        try {
-            // Here you would typically make an API call to your backend
-            console.log('Sharing resource:', resourceName);
-            
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 500));
-            
-            // Show share options
-            const shareUrl = `${window.location.origin}/resources/${encodeURIComponent(resourceName)}`;
-            
-            if (navigator.share) {
-                // Use Web Share API if available
-                await navigator.share({
-                    title: resourceName,
-                    text: 'Check out this study resource!',
-                    url: shareUrl
-                });
-            } else {
-                // Fallback to copying link
-                await navigator.clipboard.writeText(shareUrl);
-                alert('Link copied to clipboard!');
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Upload failed');
             }
+
+            const newResource = await response.json();
+            resources.unshift(newResource);
+            filteredResources = [...resources];
+            renderResources();
+
+            showSuccess('Resource uploaded successfully!');
+            uploadModal.classList.remove('active');
+            resetUploadForm();
         } catch (error) {
-            console.error('Failed to share resource:', error);
-            alert('Failed to share resource. Please try again.');
+            console.error('Upload error:', error);
+            showError(error.message || 'Failed to upload resource. Please try again.');
+        } finally {
+            uploadSubmitBtn.disabled = false;
+            uploadSubmitBtn.textContent = 'Upload Resource';
         }
     });
-});
+}
 
-// Helper Functions
+function handleFiles(files) {
+    const file = files[0];
+    if (!file) return;
+
+    fileInput.files = files;
+    showFileInfo(file);
+}
+
+function showFileInfo(file) {
+    fileName.textContent = file.name;
+    fileSize.textContent = formatFileSize(file.size);
+    fileInfo.classList.add('active');
+}
+
+function removeFile() {
+    fileInput.value = '';
+    fileInfo.classList.remove('active');
+}
+
+function resetUploadForm() {
+    uploadForm.reset();
+    removeFile();
+}
+
+// Preview functionality
+async function handlePreview(resourceId) {
+    try {
+        const response = await fetch(`${RESOURCES_ENDPOINT}/${resourceId}`);
+        if (!response.ok) throw new Error('Failed to load resource details');
+        
+        const resource = await response.json();
+        
+        // Update preview modal content
+        document.getElementById('preview-title').textContent = resource.title;
+        document.getElementById('preview-description').textContent = resource.description;
+        document.getElementById('preview-subject').textContent = resource.subject;
+        document.getElementById('preview-type').textContent = resource.type;
+        document.getElementById('preview-uploader').textContent = resource.uploader;
+        document.getElementById('preview-date').textContent = formatDate(resource.date);
+        document.getElementById('preview-rating').textContent = resource.rating.toFixed(1);
+        document.getElementById('preview-downloads').textContent = formatNumber(resource.downloads);
+        document.getElementById('preview-views').textContent = formatNumber(resource.views);
+        document.getElementById('preview-comments').textContent = formatNumber(resource.comments);
+
+        // Show preview modal
+        previewModal.classList.add('active');
+    } catch (error) {
+        console.error('Preview error:', error);
+        showError('Failed to load resource preview');
+    }
+}
+
+// Download functionality
+async function handleDownload(resourceId) {
+    try {
+        const response = await fetch(`${RESOURCES_ENDPOINT}/${resourceId}/download`);
+        if (!response.ok) throw new Error('Download failed');
+        
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = ''; // Let the server set the filename
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    } catch (error) {
+        console.error('Download error:', error);
+        showError('Failed to download resource');
+    }
+}
+
+// Render resources
+function renderResources() {
+    resourcesContainer.innerHTML = filteredResources.map(resource => `
+        <div class="resource-card">
+            <div class="resource-header">
+                <h3>${resource.title}</h3>
+                <div class="resource-rating">
+                    <span class="rating-value">${resource.rating.toFixed(1)}</span>
+                    <span class="rating-stars">${'★'.repeat(Math.round(resource.rating))}${'☆'.repeat(5 - Math.round(resource.rating))}</span>
+                </div>
+            </div>
+            <p class="resource-description">${resource.description}</p>
+            <div class="resource-meta">
+                <span class="resource-subject">${resource.subject}</span>
+                <span class="resource-type">${resource.type}</span>
+            </div>
+            <div class="resource-tags">
+                ${resource.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <div class="resource-stats">
+                <span><i class="fas fa-download"></i> ${formatNumber(resource.downloads)}</span>
+                <span><i class="fas fa-eye"></i> ${formatNumber(resource.views)}</span>
+                <span><i class="fas fa-comments"></i> ${formatNumber(resource.comments)}</span>
+            </div>
+            <div class="resource-actions">
+                <button class="preview-btn" onclick="handlePreview('${resource.id}')">
+                    <i class="fas fa-eye"></i> Preview
+                </button>
+                <button class="download-btn" onclick="handleDownload('${resource.id}')">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Utility functions
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -147,47 +333,45 @@ function debounce(func, wait) {
     };
 }
 
-function filterResources(searchTerm = '', subjectFilter = '', typeFilter = '') {
-    const resourceCards = document.querySelectorAll('.resource-card');
-    
-    resourceCards.forEach(card => {
-        const resourceName = card.querySelector('h3').textContent.toLowerCase();
-        const description = card.querySelector('.resource-description').textContent.toLowerCase();
-        const subject = card.querySelector('.subject').textContent.toLowerCase();
-        const type = card.querySelector('.resource-type i').className.toLowerCase();
-        
-        const matchesSearch = resourceName.includes(searchTerm) || 
-                            description.includes(searchTerm);
-        
-        const matchesSubject = !subjectFilter || subject.includes(subjectFilter.toLowerCase());
-        const matchesType = !typeFilter || type.includes(typeFilter.toLowerCase());
-        
-        if (matchesSearch && matchesSubject && matchesType) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
     });
 }
 
-// File Upload Preview
-const fileInput = document.querySelector('input[type="file"]');
-if (fileInput) {
-    fileInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            // Here you could add file validation
-            const maxSize = 10 * 1024 * 1024; // 10MB
-            if (file.size > maxSize) {
-                alert('File size exceeds 10MB limit');
-                fileInput.value = '';
-                return;
-            }
-            
-            // Update UI to show selected file
-            const fileName = file.name;
-            const fileType = file.type;
-            console.log('Selected file:', fileName, fileType);
-        }
-    });
+function formatNumber(num) {
+    if (num >= 1000000) {
+        return (num / 1000000).toFixed(1) + 'M';
+    }
+    if (num >= 1000) {
+        return (num / 1000).toFixed(1) + 'K';
+    }
+    return num.toString();
+}
+
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+function showError(message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    document.body.appendChild(errorDiv);
+    setTimeout(() => errorDiv.remove(), 3000);
+}
+
+function showSuccess(message) {
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message';
+    successDiv.textContent = message;
+    document.body.appendChild(successDiv);
+    setTimeout(() => successDiv.remove(), 3000);
 } 

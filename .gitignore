@@ -9,21 +9,19 @@ yarn-error.log
 .env.local
 .env.*.local
 
-# IDE files
-.idea/
+# Uploads
+uploads/
+
+# IDE
 .vscode/
+.idea/
 *.swp
 *.swo
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
 
-# Build files
-dist/
-build/
-*.log
-
-# Cache
-.cache/
-.temp/ 
+# Logs
+logs/
+*.log 
