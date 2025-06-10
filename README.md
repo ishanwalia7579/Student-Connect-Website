@@ -2,6 +2,8 @@
 
 A platform for students to share and access educational resources, including notes, slides, code examples, and more.
 
+###demo
+<img src="studentconnect.png">
 ## Features
 
 - Resource sharing and downloading
